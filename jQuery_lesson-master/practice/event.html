@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>jquery事件處理</title>
+    <style>
+      .container {
+        display: flex;
+        width: 800px;
+      }
+      .word1 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 10px;
+        width: 300px;
+        height: 300px;
+        background: tomato;
+      }
+      .word2 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 10px;
+        width: 300px;
+        height: 300px;
+        background: tomato;
+        /* 轉場效果 */
+        transition: all 0.3s;
+      }
+      .word3 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 10px;
+        width: 300px;
+        height: 300px;
+        background: lightskyblue;
+        /* 轉場效果 */
+        transition: all 0.5s;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <p class="word1">今天天氣很好</p>
+      <p class="word2">jQuery超好玩</p>
+      <p class="word3">Box3</p>
+    </div>
+    <select name="fruit" id="fruit">
+      <option value="蘋果">蘋果</option>
+      <option value="草莓">草莓</option>
+      <option value="香蕉">香蕉</option>
+      <option value="芭樂">芭樂</option>
+      <option value="水蜜桃">水蜜桃</option>
+    </select>
+    <p class="list">您選擇的水果是蘋果</p>
+    <!-- CDN jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(function () {
+        // 綁定 click 事件 --> use on()
+        $(".word1").on("click", function () {
+          // 點擊後改變背景色
+          $(this).css("background-color", "yellow");
+        });
+        // 綁定 dblclick 事件
+        $(".word2").on("dblclick", function () {
+          $(this).css({
+            height: "450px",
+            "background-color": "lightblue",
+            // 可搭配 CSS transition 做到動畫效果
+          });
+        });
+        // 綁定 mouseenter 事件
+        $(".word3").on("mouseenter", function () {
+          $(this).css({
+            "background-color": "pink",
+            height: "450px",
+          });
+        });
+        // 綁定 mouseleave 事件
+        $(".word3").on("mouseleave", function () {
+          $(this).css({
+            height: "300px",
+            "background-color": "lightskyblue",
+          });
+        });
+        // 綁定 hover 事件 -- 3.3版以前的舊語法
+        $(".word2").hover(
+          function () {
+            // 滑鼠滑入執行程式
+            $(this).css("background-color", "blue");
+          },
+          function () {
+            // 滑鼠滑出執行程式
+            $(this).css("background-color", "red");
+          }
+        );
+        // 綁定 mousemove 事件
+        // 滑鼠在元素裡移動時執行
+        /*
+        $(".word2").on("mousemove", function () {
+          $(this).css({
+            height: "450px",
+          });
+        });
+        */
+        // 綁定 mousedown 事件
+        // 滑鼠按下時執行
+        $(".word2").on("mousedown", function () {
+          $(this).css({
+            height: "450px",
+          });
+        });
+        // 綁定 mouseup 事件
+        // 滑鼠放開時執行
+        $(".word2").on("mouseup", function () {
+          $(this).css({
+            height: "300px",
+          });
+        });
+
+        // 綁定 change 事件 !!!!
+        // 通常用於下拉式選單
+        $("#fruit").on("change", function () {
+          $(".list").text("您選擇的水果是" + $(this).val());
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,39 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>練習選擇元素</title>
-</head>
-<body>
-    <h1>歡迎來上好玩的jQuery課程</h1>
+    <style>
+      input[type="text"] {
+        height: 50px;
+        border-radius: 15px;
+        border: 2px solid tomato;
+      }
+    </style>
+  </head>
+  <body>
+    <h1><p>歡迎來上好玩的jQuery課程</p></h1>
     <p>今天天氣很好</p>
     <p>jQuery超好玩</p>
     <ul id="Menu">
-        <li>蛋糕</li>
-        <li>麵包</li>
-        <li>義大利麵</li>
-        <li>甜點</li>
-        <li>牛排</li>
+      <li>蛋糕</li>
+      <li>麵包</li>
+      <li>義大利麵</li>
+      <li>甜點</li>
+      <li>牛排</li>
     </ul>
-    
-    <input type="text" value="我是輸入框">
-    <input name="Phone" type="text" value="0988123456">
 
+    <input type="text" value="我是輸入框" />
+    <input name="Phone" type="text" value="0988123456" />
+
+    <div id="box">
+      <p>Text
+        <div>
+          <p>Text2</p>
+        </div>
+      </p>
+      <p>Text3</p>
+      <p>Text4</p>
+    </div>
+
+    <!-- CDN jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        $(function(){
-            // 選取h1並使用console.log顯示元素
-        
-            // 選取Menu並使用console.log顯示元素
-            
-            // 選取Menu li 並使用console.log顯示元素
+      // function 預設是 $(document).ready()
+      // 沒寫在 function 可以編譯但是不會執行
+      $(function () {
+        //// 選取h1並使用console.log顯示元素
+        // 原生 javascript 語法
+        let myh1 = document.querySelector("h1").innerHTML;
+        console.log("innerHTML: " + myh1);
+        // use jQuery
+        console.log($("h1").html());
+        // 顯示 innerHTML --> <p>歡迎來上好玩的jQuery課程</p>
+        console.log($("h1").text());
+        // 顯示 innerText --> 歡迎來上好玩的jQuery課程
 
-            // 選取p並使用console.log顯示元素
+        //// 選取Menu並改變背景色
+        // jQuery
+        $("#Menu").css("background-color", "lightblue");
+        // 將ID為"Menu"的背景色改為lightblue
 
-            // 選取input並使用console.log顯示元素
+        //// 選取Menu li 並使用console.log顯示元素
+        // jQuery
+        $("#Menu li").css("color", "purple");
+        // 將ID為"Menu"的li元素的文字顏色改為紫色
+        $("#Menu li:nth-child(3)").css("color", "white");
+        // 將ID為"Menu"的li元素的第三個文字顏色改為白色
+
+        //// 選取p並把文字顏色改為紅色
+        // jQuery
+        $("p").css("color", "red");
+        // 將所有的 p元素 的文字顏色改為紅色
+
+        //// 選取所有input並改變框線顏色
+        $("input[type='text']").css({
+          "border-radius": "20px",
+          border: "1px solid red",
         });
+        // 將所有的 input元素 的圓角改變、框線厚度改變及顏色改為紅色
+
+        //// 選取box底下所有p標籤換成灰字
+        $("#box p").css("color", "grey");
+        // 將ID為"box"內的所有p元素的文字顏色改為灰色
+        $("#box > p").css({
+          "font-weight": "bold",
+          color: "brown",
+        });
+        // 將ID為"box"的第一層 p元素 的文字加粗、顏色改為棕色
+        $("#box > p").eq(2).css("color", "blue");
+        // eq() 用來選擇第幾個，索引值從0開始
+        // 將ID為"box"的第一層的第三個"p元素"的文字顏色改為藍色
+      });
     </script>
-</body>
+  </body>
 </html>

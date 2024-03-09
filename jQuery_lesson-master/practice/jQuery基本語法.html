@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: tomato;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box"></div>
+    <!-- CDN jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+      // jQuery 語法
+      // $(document).ready() 不需要等待網頁上所有圖片和其他資源載入完成
+      // $(window).on(‘load’,function{}) 函式則會在網頁上所有的圖片和其他資源都載入完成後才會執行。
+      $(function () {
+        // jQuery 程式碼
+        // $ 為 jQuery 的縮寫
+        // $("選取器").方法("屬性","值")
+        $(".box").css("background-color", "green");
+        $(".box").css("width", "200px");
+        $(".box").css("height", "300px");
+        // 可簡化成
+        $(".box").css({
+          // "屬性":"值" <-- 屬性引號最好都加
+          "background-color": "green",
+          width: "200px",
+          height: "300px",
+        });
+      });
+    </script>
+  </body>
+</html>

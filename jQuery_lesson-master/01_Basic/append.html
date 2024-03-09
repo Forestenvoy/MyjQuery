@@ -1,32 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>練習使用append</title>
-</head>
-<body>
+    <style>
+      .box-child {
+        width: 50px;
+        height: 50px;
+        background-color: orangered;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
     <p>今天天氣很好</p>
-    
+
     <ul id="menu">
-        <li>About</li>
-        <li>Portfolio</li>
-        <li>Contact</li>
+      <li>About</li>
+      <li>Portfolio</li>
+      <li>Contact</li>
     </ul>
+    <div id="box"></div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        $(function(){
-            // 在所有段落元素後面添加一個新的 div 元素
-            $("p").append("<div>我是新元素</div>");
-            // 刪除所有段落元素
-            // $("p").remove();
+      $(function () {
+        // 在所有段落元素後面添加一個新的 div 元素
+        $("p").append("<div>我是新元素</div>");
+        // 刪除所有段落元素
+        // $("p").remove();
 
-            // 試著在menu後面增加一個h1標題叫Product
-            $("#menu").append("<h1>Product</h1>");
-            // 試著移除menu選單
+        // 試著在menu後面增加一個h1標題叫Product
+        $("#menu").append("<h1>Product</h1>");
+        // 試著移除menu選單
 
-        });
+        //// 在在ID為"box"裡面增加一個div元素class為box-child，重複三次
+        for (let i = 0; i < 3; i++) {
+          $("#box").append(`<div class='box-child'><p>Box${i + 1}</p></div>`);
+        }
+        /// 移除所有的 box-child
+        // $(".box-child").remove();
+        //// 移除第三個 box-child
+        // $(".box-child").eq(2).remove();
+        $(".box-child:nth-child(3)").remove();
+
+        //// 把menu的about改成關於我
+        $("#menu li:nth-child(1)").html("<a href=''>關於我</a>");
+        console.log($("#menu li:nth-child(1)").html()); // <a href=''>關於我</a>
+        //// 改變#box內部的html
+        // $("#box").html("<a href=''>關於我</a>");
+      });
     </script>
-</body>
+  </body>
 </html>
