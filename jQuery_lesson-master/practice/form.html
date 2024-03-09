@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>表單練習</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin: 50px auto;
+        padding: 20px;
+        width: 300px;
+      }
+
+      h2 {
+        text-align: center;
+      }
+
+      .form-group {
+        margin-bottom: 15px;
+      }
+
+      label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      textarea {
+        width: 93%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 14px;
+      }
+
+      button {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 15px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <p class="word"></p>
+      <form action="" id="myForm">
+        <div class="form-group">
+          <label for="name">姓名:</label>
+          <input type="text" name="name" id="name" />
+        </div>
+        <div class="form-group">
+          <label for="email">E-mail:</label>
+          <input type="email" name="email" id="email" />
+        </div>
+        <div class="form-group">
+          <label for="message">留言:</label>
+          <textarea name="message" id="message" cols="30" rows="10"></textarea>
+        </div>
+        <div class="form-group">
+          <button type="submit">送出</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- CDN jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+      $(function () {
+        // , 群組選擇器
+        // 設定 focus 事件 --> 聚焦
+        $("input, textarea").on("focus", function () {
+          $(this).css("outline", "2px solid red");
+        });
+        // 設定 blur 事件 --> 失去焦點
+        $("input, textarea").on("blur", function () {
+          $(this).css("outline", "0px solid tomato");
+        });
+
+        // 設定 keydown、keyup 事件
+        // 鍵盤按下時、鍵盤放開時 觸發
+        $("#message").on("keyup", function () {
+          $(".word").text($(this).val());
+        });
+
+        // 設定 submit 事件
+        $("#myForm").on("submit", function (event) {
+          event.preventDefault(); // 不要跳頁刷新
+          $(".word").text("感謝你的填寫");
+          // 中間處理資料，例如
+          let name = $("#name").val();
+          let email = $("#email").val();
+          let msg = $("#message").val();
+          // localStorage --> 長期儲存到本機
+          localStorage.setItem("name", name);
+          localStorage.setItem("email", email);
+          localStorage.setItem("message", msg);
+          // sessionStorage --> 短期儲存到 session
+          sessionStorage.setItem("name", name);
+          sessionStorage.setItem("email", email);
+          sessionStorage.setItem("message", msg);
+          // 兩者時常使用在 串接 API
+          // 完成後，表單送出
+          $(this).submit();
+        });
+      });
+    </script>
+  </body>
+</html>

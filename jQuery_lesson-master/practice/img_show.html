@@ -4,10 +4,70 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>新增移除小icon</title>
+    <style>
+      .container {
+        width: 750px;
+        margin: auto;
+        padding-top: 50px;
+      }
+      .box img {
+        margin-right: 10px;
+        margin-bottom: 10px;
+      }
+      .button-group {
+        margin-bottom: 20px;
+        text-align: right;
+      }
+    </style>
   </head>
   <body>
+    <div class="container">
+      <div class="button-group">
+        <button id="add">新增圖片</button>
+        <button id="remove">移除團片</button>
+      </div>
+      <div class="box">
+        <img width="100px" src="./imgs/presents.png" />
+        <img width="100px" src="./imgs/presents.png" />
+        <img width="100px" src="./imgs/presents.png" />
+        <img width="100px" src="./imgs/presents.png" />
+        <img width="100px" src="./imgs/snowman.png" />
+      </div>
+    </div>
     <!-- CDN jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+      $(function () {
+        let imgs = [
+          "christmas-bell.png",
+          "christmas-lights.png",
+          "gingerbread-man.png",
+          "mistletoe.png",
+          "reindeer.png",
+          "presents.png",
+          "santa-claus.png",
+          "snowman.png",
+        ];
+        let img_index = 0;
+        console.log(imgs.length);
+        // 新增圖片
+        $("#add").on("click", function () {
+          $(".box").append(
+            `<img width='100px' src='./imgs/${imgs[img_index]}' />`
+          );
+          img_index++;
+          if (img_index >= imgs.length) {
+            img_index = 0;
+          }
+        });
+        // 移除圖片
+        $("#remove").on("click", function () {
+          // $(".box img:last").remove();
+          // $(".box img").last().remove();
+          $(".box img").eq(-1).remove();
+          console.log($(".box img").length);
+        });
+      });
+    </script>
   </body>
 </html>

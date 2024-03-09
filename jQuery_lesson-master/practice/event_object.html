@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+        width: 200px;
+        height: 200px;
+        background-color: antiquewhite;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">我是box</div>
+    <!-- CDN jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+      $(function () {
+        // 點擊事件
+        $(".box").on("click", function (event) {
+          console.log(event.type);
+          console.log(event.target);
+          console.log("x座標：" + event.clientX);
+          console.log("y座標：" + event.clientY);
+          // event.clientX 是相對於客戶區左上角的 X 座標，有滾動就會有差異
+          // event.pageX 是相對於頁面左上角的 X 座標。
+          console.log("鼠標的位置：" + event.pageX + "," + event.pageY);
+
+          // 解除事件
+          $(this).off("mouseenter");
+        });
+
+        $(".box").on("mouseenter", function (event) {
+          $(this).css("background-color", "tomato");
+        });
+
+        $(".box").on("mouseleave", function (event) {
+          $(this).css("background-color", "antiquewhite");
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Window事件</title>
+    <style>
+      body {
+        transition: all 0.3s;
+      }
+    </style>
+  </head>
+  <body>
+    <!--
+    <div class="container">
+      <img src="imgs/banner1.jpg" alt="" />
+      <img src="imgs/banner2.jpg" alt="" />
+      <img src="imgs/banner3.jpg" alt="" />
+    </div>
+    -->
+    <img src="imgs/banner1.jpg" alt="" />
+    <img src="imgs/banner2.jpg" alt="" />
+    <img src="imgs/banner3.jpg" alt="" />
+    <button class="go-top">回到頂端</button>
+    <!-- CDN jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+      $(function () {
+        console.log("頁面載入完成");
+      });
+      // 當整個文檔及內容都載入完成時觸發事件
+      $(window).on("load", function () {
+        console.log("圖片載入完成");
+        // $(".container img").css("width", "300px");
+
+        let viewport = $(window).width();
+        // 當視窗寬度小於 768px 時觸發
+        if (viewport < 768) {
+          // 當圖片被點擊時觸發
+          $(".container img").on("click", function () {
+            $(this).css("border", "2px solid red");
+          });
+        } else {
+          // 當滑鼠移入圖片時觸發
+          $(".container img").on("mouseenter", function () {
+            $(this).css("border", "2px solid red");
+          });
+          // 當滑鼠離開圖片時觸發
+          $(".container img").on("mouseleave", function () {
+            $(this).css("border", "none");
+          });
+        }
+      });
+
+      // 當窗口大小變動時觸發事件
+      $(window).on("resize", function () {
+        console.log($(window).width());
+      });
+
+      // 當視窗滾動時觸發事件
+      $(window).on("scroll", function () {
+        // 計算第三個圖片的離頂部距離
+        console.log($(".container img").eq(2).position().top);
+        $(".go-top").on("click", function () {
+          // 滾動到頂端
+          $(window).scrollTop(0);
+        });
+      });
+    </script>
+  </body>
+</html>
