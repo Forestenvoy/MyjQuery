@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Homework-0309</title>
+    <style>
+      .container {
+        width: 1000px;
+        margin: auto;
+        padding-top: 50px;
+      }
+      .box {
+        width: 400px;
+        height: 400px;
+        background-color: antiquewhite;
+        margin: auto;
+        transition: all 0.5s;
+        overflow: auto;
+      }
+      .button-group {
+        margin-top: 20px;
+        text-align: center;
+      }
+      button {
+        margin-right: 10px;
+        width: 100px;
+        height: 30px;
+        font-size: large;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="box"></div>
+      <div class="button-group">
+        <button id="zoom">放大</button>
+        <button id="shrink">縮小</button>
+        <button id="add">加入圖片</button>
+        <button id="remove">移除圖片</button>
+        <button id="changeColor">變背景色</button>
+      </div>
+    </div>
+    <!-- CDN jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+      $(function () {
+        let imgs = [
+          "social_01.jpg",
+          "social_02.jpg",
+          "social_03.jpg",
+          "social_04.jpg",
+          "social_05.jpg",
+          "social_06.jpg",
+        ];
+        let img_index = Math.floor(Math.random() * 6);
+        // 放大
+        $("#zoom").on("click", function () {
+          $(".box").css({
+            width: "600px",
+            height: "600px",
+          });
+        });
+        // 縮小
+        $("#shrink").on("click", function () {
+          $(".box").css({
+            width: "300px",
+            height: "300px",
+          });
+        });
+        // 加入圖片
+        $("#add").on("click", function () {
+          $(".box").append(
+            `<img width='100px' src='./imgs/${imgs[img_index]}' />`
+          );
+          img_index = Math.floor(Math.random() * 6);
+          console.log(img_index);
+        });
+        // 移除圖片
+        $("#remove").on("click", function () {
+          // $(".box img:last").remove();
+          // $(".box img").last().remove();
+          $(".box img").eq(-1).remove();
+        });
+        // 變背景色
+        $("#changeColor").on("click", function () {
+          let r = Math.floor(Math.random() * 256);
+          let g = Math.floor(Math.random() * 256);
+          let b = Math.floor(Math.random() * 256);
+          $(".box").css("background-color", `rgb(${r},${g},${b})`);
+        });
+      });
+    </script>
+  </body>
+</html>
