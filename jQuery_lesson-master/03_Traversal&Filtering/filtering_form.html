@@ -1,59 +1,95 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>表單樣式設定</title>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <style>
-    .styled-input {
-      width: 100px;
-      height: 40px;
-      padding: 5px;
-      border: 1px solid green;
-      border-radius: 5px;
-    }
-  </style>
-</head>
-<body>
+  <head>
+    <title>表單樣式設定</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+      .styled-input {
+        width: 100px;
+        height: 40px;
+        padding: 5px;
+        border: 1px solid green;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <form>
+      <div>
+        <label for="name">姓名：</label>
+        <input type="text" id="name" name="name" class="styled-input" />
+      </div>
+      <div>
+        <label for="email">電子郵件：</label>
+        <input type="email" id="email" name="email" class="styled-input" />
+      </div>
+      <div>
+        <label for="phone">電話號碼：</label>
+        <input type="tel" id="phone" name="phone" class="styled-input" />
+      </div>
+      <div>
+        <label for="interests">興趣：</label>
+        <input type="checkbox" id="interest1" name="interest1" /> 運動
+        <input type="checkbox" id="interest2" name="interest2" class="active" />
+        音樂 <input type="checkbox" id="interest3" name="interest3" /> 藝術
+      </div>
+      <div>
+        <input type="submit" value="提交" />
+      </div>
+    </form>
 
-<form>
-  <div>
-    <label for="name">姓名：</label>
-    <input type="text" id="name" name="name" class="styled-input">
-  </div>
-  <div>
-    <label for="email">電子郵件：</label>
-    <input type="email" id="email" name="email" class="styled-input">
-  </div>
-  <div>
-    <label for="phone">電話號碼：</label>
-    <input type="tel" id="phone" name="phone" class="styled-input">
-  </div>
-  <div>
-    <label for="interests">興趣：</label>
-    <input type="checkbox" id="interest1" name="interest1"> 運動
-    <input type="checkbox" id="interest2" name="interest2"> 音樂
-    <input type="checkbox" id="interest3" name="interest3"> 藝術
-  </div>
-  <div>
-    <input type="submit" value="提交">
-  </div>
-</form>
+    <ul>
+      <li>list item 1</li>
+      <li>
+        list item 2
+        <ul>
+          <li>list item 2-a</li>
+          <li class="active">list item 2-b</li>
+        </ul>
+      </li>
+      <li>list item 3</li>
+      <li>list item 4</li>
+    </ul>
 
-<script>
-  $(document).ready(function() {
-    // 使用 jQuery 選擇所有具有 'styled-input' 類別的元素，但排除 '興趣' 區塊內的複選框
-    $('.styled-input').not('#phone').each(function() {
-      $(this).css({
-        'width': '150px',
-        'height': '40px',
-        'padding': '5px',
-        'margin-bottom': '10px',
-        'border': '1px solid red',
-        'border-radius': '5px'
+    <script>
+      $(document).ready(function () {
+        // 使用 jQuery 選擇所有具有 'styled-input' 類別的元素，但排除 '興趣' 區塊內的複選框
+        // $(".styled-input")
+        //   .not("#phone")
+        //   .each(function () {
+        //     $(this).css({
+        //       width: "150px",
+        //       height: "40px",
+        //       padding: "5px",
+        //       "margin-bottom": "10px",
+        //       border: "1px solid red",
+        //       "border-radius": "5px",
+        //     });
+        //   });
+
+        // not 用法
+        $(".styled-input:not(#phone)").each(function () {
+          $(this).css({
+            height: "20px",
+            "margin-bottom": "10px",
+            border: "1px solid red",
+          });
+        });
+
+        $('input[type="checkbox"]')
+          .has(".active")
+          .css("background-color", "pink");
+
+        $("input:checkbox").each(function () {
+          $(this).css({
+            width: "30px",
+            height: "30px",
+          });
+        });
+
+        $("li").has("ul").css("background-color", "red");
+        $("li:has('.active')").css("background-color", "yellow");
       });
-    });
-  });
-</script>
-
-</body>
+    </script>
+  </body>
 </html>
