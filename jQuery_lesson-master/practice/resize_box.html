@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>siblings的練習範例</title>
+    <style>
+      .container {
+        width: 1000px;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+      }
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: rgb(234, 170, 92);
+        transition: all 0.3s;
+        overflow: hidden;
+        border-radius: 15px;
+      }
+      .pic {
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="box">
+        <img src="imgs/banner1.jpg" alt="" class="pic" />
+      </div>
+      <div class="box">
+        <img src="imgs/banner2.jpg" alt="" class="pic" />
+      </div>
+      <div class="box">
+        <img src="imgs/banner3.jpg" alt="" class="pic" />
+      </div>
+    </div>
+    <!-- CDN jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+      $(function () {
+        $(".box").on("click", function () {
+          $(this).css({
+            width: "200px",
+            height: "200px",
+            border: "2px solid red",
+            "background-color": "rgb(234, 170, 92)",
+          });
+          // siblings() 方法獲取同級元素
+          // 不包括當前選擇元素
+          $(this).siblings().css({
+            width: "100px",
+            height: "100px",
+            border: "none",
+            "background-color": "pink",
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
