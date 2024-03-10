@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Each、Map練習</title>
+    <style>
+      .sale {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="showFruits">顯示水果</button>
+    <button id="removeFruits">移除水果</button>
+    <div id="output"></div>
+    <!-- CDN jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+      $(function () {
+        // jQuery 程式碼
+        let fruits = ["蘋果", "香蕉", "橙子", "草莓", "葡萄", "火龍果"];
+
+        $("#showFruits").on("click", function () {
+          // for 迴圈
+          // for (let i = 0; i < fruits.length; i++) {
+          //   $("#output").append(`<p>${fruits[i]}</p>`);
+          // }
+
+          // each
+          $.each(fruits, function (index, value) {
+            $("#output").append(`<p>水果 ${index + 1} ~ ${value}</p>`);
+          });
+
+          // map 實作
+          var new_fruits = $("#output")
+            .find("p")
+            .map(function (index, element) {
+              // 返回的是一個 jQuery 物件
+              console.log($(element).text());
+              return $(element).text() + "<span class='sale'> 特價中</span>";
+            }); // end map
+
+          $.each(new_fruits, function (index, value) {
+            $("#output").append(`<p>${value}</p>`);
+          });
+          console.log(new_fruits);
+        }); // end showFruits click
+
+        $("#removeFruits").on("click", function () {
+          $("#output").find("p").remove();
+        }); // end removeFruits click
+      }); // end function
+    </script>
+  </body>
+</html>

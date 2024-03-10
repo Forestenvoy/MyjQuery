@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>prev跟next練習</title>
+    <style>
+      .container {
+        width: 1000px;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .dots {
+        margin-left: 20px;
+        margin-right: 20px;
+        width: 300px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 200px;
+      }
+      .box {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        font-size: 18px;
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: antiquewhite;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.5s;
+      }
+
+      /* 特殊按鈕 */
+      .button-85 {
+        padding: 0.6em 2em;
+        border: none;
+        outline: none;
+        color: rgb(255, 255, 255);
+        background: #111;
+        cursor: pointer;
+        position: relative;
+        z-index: 0;
+        border-radius: 10px;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+      }
+      .button-85:before {
+        content: "";
+        background: linear-gradient(
+          45deg,
+          #ff0000,
+          #ff7300,
+          #fffb00,
+          #48ff00,
+          #00ffd5,
+          #002bff,
+          #7a00ff,
+          #ff00c8,
+          #ff0000
+        );
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        background-size: 400%;
+        z-index: -1;
+        filter: blur(5px);
+        -webkit-filter: blur(5px);
+        width: calc(100% + 4px);
+        height: calc(100% + 4px);
+        animation: glowing-button-85 20s linear infinite;
+        transition: opacity 0.3s ease-in-out;
+        border-radius: 10px;
+      }
+      @keyframes glowing-button-85 {
+        0% {
+          background-position: 0 0;
+        }
+        50% {
+          background-position: 400% 0;
+        }
+        100% {
+          background-position: 0 0;
+        }
+      }
+      .button-85:after {
+        z-index: -1;
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: #222;
+        left: 0;
+        top: 0;
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <button id="prevBtn" class="button-85">上一個</button>
+      <div class="dots">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+      </div>
+      <button id="nextBtn" class="button-85">下一個</button>
+    </div>
+
+    <!-- CDN jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+      $(function () {
+        // jQuery 程式碼
+        // 第一個 eq(0) == first()
+        // 最後一個 eq(-1) == last()
+        let currentBox = $(".box").first();
+        currentBox.css({
+          border: "4px solid antiquewhite",
+          "background-color": "brown",
+          color: "white",
+          width: "100px",
+          height: "100px",
+        });
+
+        // 上一個按鈕
+        $("#prevBtn").on("click", function () {
+          // 當前Box元素的前一個同級元素
+          currentBox = currentBox.prev();
+
+          // 如果box元素沒有前一個同級元素
+          if (currentBox.index() === -1) {
+            currentBox = $(".box").last();
+          }
+
+          // 改變 currentBox 元素樣式
+          currentBox.css({
+            border: "4px solid antiquewhite",
+            "background-color": "brown",
+            color: "white",
+            width: "100px",
+            height: "100px",
+          });
+          // 改變其他 Box 元素樣式
+          currentBox.siblings().css({
+            border: "4px solid transparent",
+            "background-color": "antiquewhite",
+            color: "black",
+            width: "50px",
+            height: "50px",
+          });
+        });
+        // 下一個按鈕
+        $("#nextBtn").on("click", function () {
+          console.log(currentBox.index());
+          // 當前Box元素的後一個同級元素
+          currentBox = currentBox.next();
+
+          // 如果box元素沒有後一個同級元素
+          if (currentBox.index() === -1) {
+            currentBox = $(".box").first();
+          }
+          // 改變 currentBox 元素樣式
+          currentBox.css({
+            border: "4px solid antiquewhite",
+            "background-color": "brown",
+            color: "white",
+            width: "100px",
+            height: "100px",
+          });
+          // 改變其他 Box 元素樣式
+          currentBox.siblings().css({
+            border: "4px solid transparent",
+            "background-color": "antiquewhite",
+            color: "black",
+            width: "50px",
+            height: "50px",
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Each小練習~Picture</title>
+  </head>
+  <body>
+    <button id="showPictures">顯示照片</button>
+    <button id="removePictures">移除照片</button>
+    <div id="output"></div>
+    <!-- CDN jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+      let imgs = [
+        "christmas-bell.png",
+        "christmas-lights.png",
+        "gingerbread-man.png",
+        "mistletoe.png",
+        "reindeer.png",
+        "presents.png",
+        "santa-claus.png",
+        "snowman.png",
+      ];
+      $(function () {
+        // jQuery 程式碼
+        // 顯示照片
+        $("#showPictures").on("click", function () {
+          $.each(imgs, function (index, value) {
+            $("#output").append(`<img width='100px' src='./imgs/${value}' />`);
+          });
+        });
+
+        // 移除照片
+        $("#removePictures").on("click", function () {
+          $("#output").find("img").remove();
+        });
+      });
+    </script>
+  </body>
+</html>
