@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animate練習</title>
+    <style>
+      .box {
+        width: 200px;
+        height: 200px;
+        background-color: tomato;
+        /* 沒寫就會是靜態的 */
+        position: relative;
+        transition: all 0.5s;
+      }
+      .box2 {
+        width: 100px;
+        height: 100px;
+        background-color: blue;
+        position: relative;
+        transition: all 1s;
+      }
+      .container {
+        width: 80%;
+        max-width: 1200px;
+        height: 500px;
+        margin: auto;
+        padding-top: 100px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+      }
+      .button-group {
+        width: 100%;
+        margin-top: 50px;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .large {
+        width: 400px;
+        height: 400px;
+        background-color: orange;
+      }
+      .small {
+        width: 200px;
+        height: 200px;
+        background-color: tomato;
+      }
+      .move {
+        margin-left: 500px;
+      }
+      .rotate {
+        transform: rotate(270deg);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="box large"></div>
+    </div>
+    <div class="button-group">
+      <button id="enlarge">放大</button>
+      <button id="samll">縮小</button>
+      <button id="move">移動</button>
+      <button id="rotate">旋轉</button>
+    </div>
+
+    <!-- 
+    <div class="box"></div>
+    <div class="box2"></div>
+    <button id="remove">移除</button> -->
+    <!-- CDN jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+      $(function () {
+        // jQuery 程式碼
+        // $(".box").on("mouseenter", function () {
+        //   // 從左邊跑到右邊 and 變寬
+        //   $(this).animate({ left: "500px", width: "400px" }, 2000, function () {
+        //     // 當動畫完成時執行
+        //     $(".box2").animate({ top: "300px" }, 1000);
+        //   });
+        // });
+        // $(".box").on("mouseleave", function () {
+        //   // 從右邊跑到左邊 and 變窄
+        //   $(this).animate({ left: "0px", width: "200px" }, 2000, function () {
+        //     // 當動畫完成時執行
+        //     $(".box2").animate({ top: "0px" }, 1000);
+        //   });
+        // });
+
+        // $(".box2").on("click", function () {
+        //   $(this).addClass("large");
+        // });
+        // $("#remove").on("click", function () {
+        //   $(".box2").removeClass("large");
+        // });
+        $(".box2").on("click", function () {
+          $(this).toggleClass("large");
+        });
+
+        // 設計各按鈕
+        $("#enlarge").on("click", function () {
+          $(".box").addClass("large");
+          $(".box").removeClass("small");
+          $(".box").removeClass("move");
+          $(".box").removeClass("rotate");
+        });
+        $("#samll").on("click", function () {
+          $(".box").removeClass("large");
+          $(".box").addClass("small");
+          $(".box").removeClass("move");
+          $(".box").removeClass("rotate");
+        });
+        $("#move").on("click", function () {
+          $(".box").removeClass("large");
+          $(".box").removeClass("small");
+          $(".box").addClass("move");
+          $(".box").removeClass("rotate");
+        });
+        $("#rotate").on("click", function () {
+          $(".box").removeClass("large");
+          $(".box").removeClass("small");
+          $(".box").removeClass("move");
+          $(".box").addClass("rotate");
+        });
+      });
+    </script>
+  </body>
+</html>

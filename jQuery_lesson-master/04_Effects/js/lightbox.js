@@ -3,18 +3,19 @@ $(function() {
     $('.lightbox').on('click',function(e) {
       // 防止點擊時跳轉到 href 指定的 URL
       e.preventDefault();
-      // 取得被點擊的圖片 URL
+      // 取得被點擊的圖片 URL --> attr() 取得屬性值
       var imageUrl = $(this).attr('href');
       // 設置 .lightbox-image 元素的 src 屬性為所點擊圖片的 URL
+      // attr() 賦予屬性值
       $('.lightbox-image').attr('src', imageUrl);
       // 顯示 .lightbox-overlay 元素，以顯示圖片
-      $('.lightbox-overlay').fadeIn();
+      $('.lightbox-overlay').fadeIn(500);
     });
   
     // 綁定 .lightbox-close 元素的點擊事件
     $('.lightbox-close').on('click',function() {
       // 隱藏 .lightbox-overlay 元素，以關閉圖片顯示
-      $('.lightbox-overlay').fadeOut();
+      $('.lightbox-overlay').fadeOut(500);
     });
   });
   

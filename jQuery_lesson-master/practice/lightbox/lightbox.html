@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>燈箱效果</title>
+    <!-- 掛載 lightbox.css -->
+    <link rel="stylesheet" href="lightbox.css" />
+  </head>
+  <body>
+    <div class="gallery">
+      <a href="imgs/japan1.jpg" class="lightbox">
+        <img src="imgs/thumbs/japan1.jpg" alt="" />
+      </a>
+      <a href="imgs/japan2.jpg" class="lightbox">
+        <img src="imgs/thumbs/japan2.jpg" alt="" />
+      </a>
+      <a href="imgs/japan3.jpg" class="lightbox">
+        <img src="imgs/thumbs/japan3.jpg" alt="" />
+      </a>
+      <a href="imgs/photo1.jpg" class="lightbox">
+        <img src="imgs/thumbs/photo1.jpg" alt="Image 3" />
+      </a>
+      <a href="imgs/photo2.jpg" class="lightbox">
+        <img src="imgs/thumbs/photo2.jpg" alt="Image 3" />
+      </a>
+      <a href="imgs/photo3.jpg" class="lightbox">
+        <img src="imgs/thumbs/photo3.jpg" alt="Image 3" />
+      </a>
+    </div>
+    <div class="lightbox-overlay">
+      <div class="lightbox-content">
+        <img src="" alt="" class="lightbox-img" />
+        <span class="close">&times;</span>
+      </div>
+    </div>
+    <!-- CDN jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- 掛載 lightbox.js -->
+    <script src="lightbox.js"></script>
+  </body>
+</html>
