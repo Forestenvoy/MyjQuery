@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animate + WOW</title>
+    <!-- Animate.css -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <style>
+      body {
+        background-color: rgb(26, 81, 83);
+      }
+      .container {
+        width: 80%;
+        max-width: 1200px;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+      .box1,
+      .box2 {
+        width: 500px;
+        height: 400px;
+        margin-bottom: 50px;
+      }
+      .box1 {
+        background-color: antiquewhite;
+      }
+      .box2 {
+        background-color: rgb(244, 78, 155);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="box1 animate__animated animate__wobble">Box1</div>
+      <div class="box2 animate__animated animate__wobble animate__delay-2s">
+        Box2
+      </div>
+      <div class="box2">Box2</div>
+      <div class="box1">Box1</div>
+      <div class="box1">Box1</div>
+      <div class="box2">Box2</div>
+      <div
+        class="box2 wow animate__animated animate__fadeInLeft"
+        data-wow-duration="2s"
+      >
+        Box2
+      </div>
+      <div
+        class="box1 wow animate__animated animate__fadeInRight"
+        data-wow-duration="2s"
+      >
+        Box1
+      </div>
+    </div>
+    <!-- CDN jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- WOW 使網頁元素在滾動到可視區域時產生動畫效果 -->
+    <!-- WOW JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+    <script>
+      new WOW().init();
+    </script>
+  </body>
+</html>
