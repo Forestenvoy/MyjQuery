@@ -1,0 +1,88 @@
+/* 手風琴整體區塊 */
+.accordion{
+    /* 限制最大寬度 */
+    max-width: 800px;
+    width: 80%;
+    /* 上下100px 左右自動 */
+    margin: 100px auto;
+}
+
+/* 手風琴項目區塊 */
+.accordion-item{
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
+    /* 因為圓角做在外容器 */
+    overflow: hidden;
+}
+
+/* 手風琴標題 */
+.accordion-header{
+    padding: 15px 20px;
+    margin: 0;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: lightcyan;
+    font-size: 18px;
+    font-weight: 500;
+    /* 字間距 */
+    letter-spacing: 1px;
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+/* 手風琴標題 hover */
+.accordion-header:hover{
+    background-color: lightseagreen;
+    color: white;
+}
+
+/* +符號 */
+.accordion-header::after{
+    content: "\002B";
+    font-size: 24px;
+    /* 字體加粗 */
+    font-weight: bold;
+    color: #333;
+    /*  */
+    transition: all 0.3s ease;
+}
+.accordion-header:hover::after{
+    color: white;
+}
+
+/* 手風琴內容 */
+.accordion-content{
+    padding: 20px;
+    background-color: #fff;
+    border: 2px solid lightseagreen;
+    font-size: 16px;
+    /* 行高 */
+    line-height: 1.5;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    /* 預設隱藏起來 */
+    display: none; 
+}
+
+/* 手風琴 active */
+/* 設置觸發後的樣式 */
+/* .accordion-header.active , .accordion-header.active::after{
+    background-color: lightseagreen;
+    color: white;
+} */
+.accordion-item.active .accordion-header{
+    background-color: lightseagreen;
+    color: white;
+}
+.accordion-item.active .accordion-header::after{
+    color: white;
+    transform: rotate(225deg);
+}
+/* 可以用 slideToggle 來做 */
+/* .accordion-item.active .accordion-content{
+    display: block;
+} */

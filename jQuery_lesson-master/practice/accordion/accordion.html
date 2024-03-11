@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>手風琴效果</title>
+    <link rel="stylesheet" href="accordion.css" />
+  </head>
+  <body>
+    <!-- 手風琴 start -->
+    <div class="accordion">
+      <div class="accordion-item">
+        <h3 class="accordion-header">新菜品推薦</h3>
+        <div class="accordion-content">
+          <p>
+            我們推出了全新的火鍋套餐，適合與三五好友一起品嚐。還有多種口味的香辣鍋底和新鮮的食材可供選擇。
+          </p>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h3 class="accordion-header">優惠活動</h3>
+        <div class="accordion-content">
+          <p>
+            本月消費滿千元即可獲得 $100
+            抵用券，下次光臨時使用即可。還有週末特別優惠，單筆消費滿 $500
+            即可獲得免費的小吃拼盤一份。
+          </p>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h3 class="accordion-header">購物多少免運?</h3>
+        <div class="accordion-content">
+          <p>購物滿3000元宅配免運，滿1000元超商取貨免運</p>
+        </div>
+      </div>
+    </div>
+    <!-- 手風琴 end -->
+
+    <!-- CDN jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- 手風琴 js -->
+    <script src="accordion.js"></script>
+    <script>
+      $(function () {
+        $(".accordion-item").on("click", function () {
+          // 點擊展示手風琴內容，增加 active
+          $(this).toggleClass("active");
+          // 折疊面板，自動偵測需要展開或收縮
+          $(this).find(".accordion-content").slideToggle();
+          // 其他沒有被點擊的其他項目要縮起來，移除 active
+          $(this).siblings().removeClass("active");
+          // 面板內容也要收縮起來
+          $(this).siblings().find(".accordion-content").slideUp();
+        });
+        // 預設第一個折疊面板內容顯示
+        $(".accordion-item").first().click();
+      });
+    </script>
+  </body>
+</html>
