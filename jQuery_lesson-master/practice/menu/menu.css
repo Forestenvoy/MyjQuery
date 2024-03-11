@@ -1,0 +1,153 @@
+/* body 兩層背景色 */
+body{
+    background-color: #1D90F5;
+    min-height: 100vh;
+    margin: 0;
+    /* 字體 */
+    font-family: roboto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+body::before{
+    /* 設定偽元素內容 */
+    content: "";
+    background-color: aliceblue;
+    height: 50%;
+    width: 100%;
+    /* 定位在網頁左上角 start */
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/* 設定清單整體區塊樣式 */
+.menu{
+    width: 85px;
+    height: 85px;
+    background-color: white;
+    /* 元素的寬度和高度包括內容區域、內邊距和邊框 */
+    box-sizing: border-box;
+    display: flex;
+    /* 垂直置中 */
+    align-items: center;
+    padding: 32px;
+    border-radius: 8px;
+    position: relative;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    transition: all 1.5s;
+}
+
+/* 展開之後的樣式 */
+.menu.expanded{
+    width: 400px;
+}
+
+/* 設定清單樣式 */
+.menu-list{
+    margin: 0;
+    padding: 0;
+    /* 清單項樣式取消(小黑點) */
+    list-style: none;
+    display: flex;
+}
+
+/* 清單細項樣式 */
+.menu-list li{
+    padding: 9px;
+    visibility: visible;
+    opacity: 1;
+    transition: all 0.3s;
+    transform: rotateZ('0deg');
+}
+.menu-list li a{
+    color: black;
+    text-decoration: none;
+    font-size: 16px;
+    transition: all 0.3s;
+}
+/* 展開時的選單秒數 */
+.menu-list li:nth-child(1) {
+    transition-delay: 0.4s;
+}
+.menu-list li:nth-child(2) {
+    transition-delay: 0.5s;
+}
+.menu-list li:nth-child(3) {
+    transition-delay: 0.6s;
+}
+.menu-list li:nth-child(4) {
+    transition-delay: 0.7s;
+}
+/* 隱藏選單時的秒數 */
+.menu-list li.hidden {
+    /* width: 0; */
+    visibility: hidden;
+    opacity: 0;
+    transform: rotateY(90deg);
+}
+.menu-list li.hidden:nth-child(1) {
+    transition-delay: 0.7s;
+}
+.menu-list li.hidden:nth-child(2) {
+    transition-delay: 0.6s;
+}
+.menu-list li.hidden:nth-child(3) {
+    transition-delay: 0.5s;
+}
+.menu-list li.hidden:nth-child(4) {
+    transition-delay: 0.4s;
+}
+/* 設定動態按鈕 */
+.container{
+    position: absolute;
+    top: 22px;
+    /* 計算右邊距 */
+    right: calc((100% - 56px)/2);
+    height: 42px;
+    width: 56px;
+    transition: all 1s;
+}
+.container.close{
+    right: 10px;
+}
+.toggle{
+    position: relative;
+    height: 42px;
+    width: 58px;
+    cursor: pointer;
+}
+/* 畫出圖案 */
+.toggle::after , .toggle::before{
+    content: "";
+    background-color: #1D90F5;
+    width: 38px;
+    height: 4px;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transition: 1s cubic-bezier(.17,.67,.83,.67);
+}
+
+.toggle::before{
+    top: -30%;
+}
+
+.toggle::after{
+    top: 30%;
+}
+
+/* 設置旋轉 */
+.toggle.close::before{
+    transform: rotate(-225deg);
+    top: 0;
+}
+
+.toggle.close::after{
+    transform: rotate(225deg);
+    top: 0;
+}

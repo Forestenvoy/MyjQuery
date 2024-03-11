@@ -4,9 +4,25 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>選單特效</title>
+    <link rel="stylesheet" href="menu.css" />
   </head>
   <body>
+    <!-- 動態 Menu start -->
+    <nav class="menu">
+      <div class="container">
+        <div class="toggle"></div>
+      </div>
+      <ul class="menu-list">
+        <li class="hidden"><a href="#">Home</a></li>
+        <li class="hidden"><a href="#">About</a></li>
+        <li class="hidden"><a href="#">Info</a></li>
+        <li class="hidden"><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+    <!-- 動態 Menu end -->
     <!-- CDN jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- 自己寫的 js -->
+    <script src="menu.js"></script>
   </body>
 </html>
