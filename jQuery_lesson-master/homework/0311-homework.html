@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Full Calendar 實作</title>
+    <style>
+      .container {
+        max-width: 1200px;
+        width: 80%;
+        margin: 100px auto;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      /*
+      回家作業-研究如何使用full calendar 
+      https://fullcalendar.io/
+
+      試著將fullcalendar套用在網頁上
+
+      基本目標
+      做一個顯示2024年3月到5月的訂房日曆
+
+      假資料產生: 
+      到chatGPT或bing請ai提供「一份隨機的訂房json檔」(格式需事先閱讀api文件)
+
+      進階功能:
+      1.完成可針對不同日期新增行事曆功能
+      2.點選日期後出現可輸入資料的訂單表單 ，輸入完畢後將訂房人姓名與聯絡電話放在日曆上
+      */
+    </script>
+    <div class="container">
+      <div id="calendar"></div>
+    </div>
+    <!-- CDN jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // 載入資料
+        $.ajax({
+          url: "./booking.json",
+          type: "GET",
+          dataType: "json",
+          async: false,
+          success: function (data) {
+            // 初始化日曆 ~ 傳入資料
+            initCalendar(data);
+          },
+          error: function (xhr, status, error) {
+            console.log("Error: " + error);
+          },
+        });
+        // 函數:初始化日曆
+        function initCalendar(dataset) {
+          var calendarEl = document.getElementById("calendar");
+          var calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: "dayGridMonth",
+            // 設定有效日期範圍為 2024 年 3 月 1 日到 2024 年 5 月 31 日
+            validRange: {
+              start: "2024-03-01",
+              end: "2024-05-31",
+            },
+            // 匯入 訂房 json 資料
+            events: dataset,
+            // 日期點擊事件
+          });
+
+          calendar.render();
+        }
+      });
+    </script>
+  </body>
+</html>
