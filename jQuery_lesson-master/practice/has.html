@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: tomato;
+      }
+    </style>
+  </head>
+  <body>
+    <ul class="menu-list">
+      <li class="item">
+        第1個item
+        <ul class="child">
+          <li class="active">1</li>
+          <li class="active">2</li>
+          <li class="active">3</li>
+        </ul>
+      </li>
+      <li class="item">第2個item</li>
+      <li class="item">第3個item</li>
+      <li class="item">第4個item</li>
+      <li class="item">第5個item</li>
+    </ul>
+    <div class="box">
+      <p>我是標題</p>
+      <a href="">我是連結</a>
+    </div>
+    <div class="box"></div>
+    <!-- CDN jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+      $(function () {
+        $(".menu-list")
+          .find(".item")
+          .has(".child")
+          .css("background-color", "yellow");
+        $(".box:has('p')").css("background-color", "pink");
+        if ($(".child li").hasClass("active")) {
+          $(".child").append("<li>我是新元素</li>");
+        }
+      });
+    </script>
+  </body>
+</html>

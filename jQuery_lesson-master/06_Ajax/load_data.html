@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>練習使用 Ajax</title>
+  </head>
+  <body>
+    <select name="fruits" id="fruits"></select>
+
+    <!-- CDN jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+      $(function () {
+        // 載入資料
+        $.ajax({
+          // 資料來源
+          url: "json/fruit.json",
+          // 請求方式
+          type: "GET",
+          // 資料類型
+          dataType: "json",
+          // 成功
+          success: function (data) {
+            console.log(data);
+            console.log(
+              `水果:${data.fruits[1].name}, 金額:${data.fruits[1].price}`
+            );
+            // 將資料加入下拉選單
+            $.each(data.fruits, function (index, value) {
+              // $("#fruits").append($("<option></option>").text(value.name));
+              $("#fruits").append(
+                `<option value="${value.price}">${value.name}</option>`
+              );
+            });
+          },
+          // 失敗
+          error: function (xhr, status, error) {
+            console.log("Error: " + error);
+          },
+        });
+      });
+    </script>
+  </body>
+</html>
