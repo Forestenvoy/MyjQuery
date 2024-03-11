@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Face Cursor</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="card">
+      <div class="left">
+        <img
+          src="https://muralsyourway.vtexassets.com/arquivos/ids/241294-825-auto?width=825&height=auto&aspect=true"
+          alt="Constellation Image"
+        />
+      </div>
+      <div class="right">
+        <h2>星座的由來</h2>
+        <p>
+          星座是指天空上被劃分成不同區域的星群，通常以神話或傳說中的人物、動物等命名。古代人們觀察天空時發現，恆星呈現特定的排列，形成了各種圖案，並賦予其不同的象徵意義。星座的由來包含著悠久的歷史和文化，不同的文明和地區有著各自獨特的星座故事和傳說。
+        </p>
+      </div>
+    </div>
+    <!-- CDN jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- face-cursor.js -->
+    <script src="js/jQuery-face-cursor.js"></script>
+    <script>
+      $(function () {
+        // jQuery 程式碼
+        $(".card").faceCursor({
+          options: "go here",
+        });
+      });
+    </script>
+  </body>
+</html>
